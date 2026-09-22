@@ -59,7 +59,7 @@
     if(current) current.textContent=String(index+1).padStart(2,'0');
   }
   function next(){show(index+1)}
-  function restart(){clearInterval(timer);timer=setInterval(next,5000)}
+  function restart(){clearInterval(timer);timer=setInterval(next,3000)}
   document.querySelector('.gallery-next')?.addEventListener('click',()=>{next();restart()});
   document.querySelector('.gallery-prev')?.addEventListener('click',()=>{show(index-1);restart()});
   dots.forEach((d,n)=>d.addEventListener('click',()=>{show(n);restart()}));
