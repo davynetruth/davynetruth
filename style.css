@@ -485,3 +485,31 @@ img,video,iframe{max-width:100%}
     font-size:1.65rem;
   }
 }
+
+
+/* ===== Home service labels: informational, not clickable ===== */
+.hero .pills,
+.hero .services,
+.home-services{
+  gap:18px;
+}
+.hero .pill,
+.hero .service,
+.home-services .pill,
+.home-services .service{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  cursor:default !important;
+  pointer-events:none;
+}
+.hero .pill:hover,
+.hero .service:hover,
+.home-services .pill:hover,
+.home-services .service:hover{
+  transform:none !important;
+  background:transparent !important;
+  border-color:transparent !important;
+}
