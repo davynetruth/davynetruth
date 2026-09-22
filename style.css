@@ -533,3 +533,12 @@ img,video,iframe{max-width:100%}
   transform:none !important;
   text-decoration:none !important;
 }
+
+
+/* ===== About page Bio heading ===== */
+/* Match the smaller Powerhouse-style heading scale instead of the oversized page-title treatment. */
+.about-bio-title{
+  font-size:clamp(1.15rem,2.2vw,1.55rem) !important;
+  line-height:1.15 !important;
+  letter-spacing:.08em !important;
+}
