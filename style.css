@@ -513,3 +513,23 @@ img,video,iframe{max-width:100%}
   background:transparent !important;
   border-color:transparent !important;
 }
+
+
+/* ===== Home service labels: text only, absolutely no boxes/borders ===== */
+.home-service-label,
+.home-service-label:hover,
+.home-service-label:focus,
+.home-service-label:active{
+  background:none !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  padding:10px 4px !important;
+  cursor:default !important;
+  pointer-events:none !important;
+  transform:none !important;
+  text-decoration:none !important;
+}
