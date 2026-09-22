@@ -12,11 +12,63 @@
 
 <main class="page">
 <div class="wrap">
-  <div class="head"><div class="eyebrow">Gallery</div><h1 class="page-title">Gallery.</h1></div>
-  <div class="gallery"><div class="photo glass"><img src="assets/Studio MPC.jpg" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/street-black.jpg" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/Depth.jpg" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/producer-console.jpg" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/studio-red-mic.jpg" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/booth-blue.png" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/Stage2.jpg" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/steps-blue.png" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/polaroid-street.png" alt="DaVyne Truth gallery image"></div><div class="photo glass"><img src="assets/street-blue.png" alt="DaVyne Truth gallery image"></div></div>
-</div>
-</main>
+  <div class="head"><div class="eyebrow">Gallery</div>
+<section class="gallery-showcase" aria-label="DaVyne Truth photo gallery">
+  <div class="gallery-glow gallery-glow-one"></div>
+  <div class="gallery-glow gallery-glow-two"></div>
+  <div class="gallery-slideshow glass">
+    <div class="gallery-slides">
+      <figure class="gallery-slide active"><img src="assets/Studio MPC.jpg" alt="DaVyne Truth gallery photo 1"></figure>
+<figure class="gallery-slide"><img src="assets/street-black.jpg" alt="DaVyne Truth gallery photo 2"></figure>
+<figure class="gallery-slide"><img src="assets/Depth.jpg" alt="DaVyne Truth gallery photo 3"></figure>
+<figure class="gallery-slide"><img src="assets/studio-red-mic.jpg" alt="DaVyne Truth gallery photo 4"></figure>
+<figure class="gallery-slide"><img src="assets/Stage2.jpg" alt="DaVyne Truth gallery photo 5"></figure>
+<figure class="gallery-slide"><img src="assets/polaroid-street.png" alt="DaVyne Truth gallery photo 6"></figure>
+<figure class="gallery-slide"><img src="assets/street-blue.png" alt="DaVyne Truth gallery photo 7"></figure>
+      <div class="gallery-vignette"></div>
+      <div class="gallery-counter"><span id="galleryCurrent">01</span><span class="gallery-counter-line"></span><span>07</span></div>
+      <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="gallery-arrow gallery-next" type="button" aria-label="Next photo">›</button>
+    </div>
+    <div class="gallery-slide-footer">
+      <div><span class="eyebrow">DaVyne Truth</span><strong>IN THE MOMENT.</strong></div>
+      <div class="gallery-dots"><button class="gallery-dot active" type="button" data-slide="0" aria-label="View photo 1"></button>
+<button class="gallery-dot" type="button" data-slide="1" aria-label="View photo 2"></button>
+<button class="gallery-dot" type="button" data-slide="2" aria-label="View photo 3"></button>
+<button class="gallery-dot" type="button" data-slide="3" aria-label="View photo 4"></button>
+<button class="gallery-dot" type="button" data-slide="4" aria-label="View photo 5"></button>
+<button class="gallery-dot" type="button" data-slide="5" aria-label="View photo 6"></button>
+<button class="gallery-dot" type="button" data-slide="6" aria-label="View photo 7"></button></div>
+    </div>
+  </div>
+</section></main>
 
 <footer><div class="wrap footer"><span>© <span data-year></span> DaVyne Truth. All rights reserved.</span></div></footer><script src="site.js"></script>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.gallery-slide')];
+  const dots=[...document.querySelectorAll('.gallery-dot')];
+  const current=document.getElementById('galleryCurrent');
+  if(!slides.length) return;
+  let index=0, timer;
+  function show(i){
+    index=(i+slides.length)%slides.length;
+    slides.forEach((el,n)=>el.classList.toggle('active',n===index));
+    dots.forEach((el,n)=>el.classList.toggle('active',n===index));
+    if(current) current.textContent=String(index+1).padStart(2,'0');
+  }
+  function next(){show(index+1)}
+  function restart(){clearInterval(timer);timer=setInterval(next,5000)}
+  document.querySelector('.gallery-next')?.addEventListener('click',()=>{next();restart()});
+  document.querySelector('.gallery-prev')?.addEventListener('click',()=>{show(index-1);restart()});
+  dots.forEach((d,n)=>d.addEventListener('click',()=>{show(n);restart()}));
+  const box=document.querySelector('.gallery-slideshow');
+  box?.addEventListener('mouseenter',()=>clearInterval(timer));
+  box?.addEventListener('mouseleave',restart);
+  show(0);restart();
+})();
+</script>
+
 </body>
 </html>
